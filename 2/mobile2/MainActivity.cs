@@ -29,7 +29,7 @@ namespace mobile2 {
 
                     if (Core.PhonewordTranslator.IsSequence012_789(translatedNumber)) {
                         translatedPhoneWord.SetTextColor(Android.Graphics.Color.Green);
-                    }
+                            }
                 }
             };
 

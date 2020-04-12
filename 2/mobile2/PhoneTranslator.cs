@@ -45,11 +45,8 @@ namespace Core {
             return null;
         }
         public static bool IsSequence012_789(string phoneNumber) {
-            //if (string.IsNullOrWhiteSpace(phoneNumber)) {
-            //    return false;
-            //}
-
             var digitSequences = new string[8];
+
             for (int i = 0; i < 8; i++) {
                 digitSequences[i] = i.ToString() + (i + 1).ToString() + (i + 2).ToString();
             }
@@ -63,8 +60,5 @@ namespace Core {
             return false;
         }
 
-
     }
-
-
 }
