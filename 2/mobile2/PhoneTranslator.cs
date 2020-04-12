@@ -1,25 +1,19 @@
 ﻿using System.Text;
 using System;
-namespace Core
-{
-    public static class PhonewordTranslator
-    {
-        public static string ToNumber(string raw)
-        {
+namespace Core {
+    public static class PhonewordTranslator {
+        public static string ToNumber(string raw) {
             if (string.IsNullOrWhiteSpace(raw))
                 return "";
             else
                 raw = raw.ToUpperInvariant();
 
             var newNumber = new StringBuilder();
-            foreach (var c in raw)
-            {
-                if (" -0123456789".Contains(c))
-                {
+            foreach (var c in raw) {
+                if (" -0123456789".Contains(c)) {
                     newNumber.Append(c);
                 }
-                else
-                {
+                else {
                     var result = TranslateToNumber(c);
                     if (result != null)
                         newNumber.Append(result);
@@ -28,12 +22,10 @@ namespace Core
             }
             return newNumber.ToString();
         }
-        static bool Contains(this string keyString, char c)
-        {
+        static bool Contains(this string keyString, char c) {
             return keyString.IndexOf(c) >= 0;
         }
-        static int? TranslateToNumber(char c)
-        {
+        static int? TranslateToNumber(char c) {
             if ("ABC".Contains(c))
                 return 2;
             else if ("DEF".Contains(c))
@@ -52,5 +44,27 @@ namespace Core
                 return 9;
             return null;
         }
+        public static bool IsSequence012_789(string phoneNumber) {
+            //if (string.IsNullOrWhiteSpace(phoneNumber)) {
+            //    return false;
+            //}
+
+            var digitSequences = new string[8];
+            for (int i = 0; i < 8; i++) {
+                digitSequences[i] = i.ToString() + (i + 1).ToString() + (i + 2).ToString();
+            }
+
+            foreach (var digitSequence in digitSequences) {
+                if (phoneNumber.IndexOf(digitSequence)>=0) {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+
     }
+
+
 }
