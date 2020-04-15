@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Phoneword {
@@ -31,6 +32,10 @@ namespace Phoneword {
                 if (dialer != null)
                     dialer.Dial(translatedNumber);
             }
+        }
+
+        internal Task NavigateFromMenu(int id) {
+            throw new NotImplementedException();
         }
     }
 }
